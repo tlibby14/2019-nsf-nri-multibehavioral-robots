@@ -1,0 +1,31 @@
+abstract.tex
+  echo "COMPILED abstract"
+  bibtex abstract
+  rubber --pdf abstract.tex
+  echo "EXPLODED abstract"
+
+*.tex
+  bibtex main
+  rubber --pdf main.tex
+  echo "COMPILED main"
+
+main.tex
+  bibtex main
+  rubber --pdf main.tex
+  echo "COMPILED main"
+
+  cp main.pdf _prep/2018-design-of-dynamic-multibehavioral-robots.pdf
+
+nsf.tex
+  rubber --pdf main.tex
+  rubber --pdf abstract.tex
+
+*.bib
+  bibtex main
+  rubber --pdf main.tex
+
+overview.svg
+  inkscape overview.svg --export-pdf=overview.pdf --export-latex --export-area-page --without-gui
+  rubber --pdf main.tex
+  rubber --pdf abstract.tex
+

@@ -1,0 +1,422 @@
+\usepackage{graphicx}
+%\usepackage[demo]{graphicx}
+
+\usepackage{wrapfig}
+
+\setlength{\textfloatsep}{8pt plus 0.0pt minus 0.0pt}
+\setlength{\floatsep}{0pt plus 0.0pt minus 0.0pt}
+\setlength{\intextsep}{4pt plus 0.0pt minus 0.0pt}
+\setlength{\abovecaptionskip}{0pt}
+
+\usepackage{multirow}
+
+\usepackage{scrextend}
+\usepackage{sistyle}
+\SIthousandsep{,}
+
+\usepackage{amsthm,amssymb,amsmath}
+\usepackage[mathscr]{eucal}
+
+
+\usepackage{pgfgantt}
+\usepackage{enumitem}
+\setlist[enumerate]{label={\bf \alph*)},itemsep=0pt,topsep=5pt,parsep=0pt,leftmargin=.60in}
+\setlist[itemize]{label=\bsf{--},itemsep=0pt,topsep=0pt,parsep=0pt,leftmargin=.20in}
+%\usepackage[singlelinecheck=false,font={small,sf}]{subfig} 
+\usepackage[font={sf}]{caption}
+\usepackage[font={small,sf}]{subcaption}
+%\usepackage[singlelinecheck=false,font={small}]{subfig} 
+%\usepackage[font={normalsize}]{caption}
+
+%\newcommand{\sam}[1]{{\normalsize{{({Sam:\ }\color{blue}#1})}}}
+
+\usepackage{soul}
+\setul{3.5pt}{.4pt}
+
+\usepackage{bibentry} % \nobibliography, 
+
+\usepackage{comment}
+
+\usepackage[%hyperref
+    pdftex,
+    hypertexnames,%
+    citecolor=darkblue,%
+    colorlinks=true,%
+    linkcolor=darkblue,%
+    urlcolor=darkblue%
+]{hyperref}
+
+\usepackage{nameref}
+
+%\usepackage[numbers,sort&compress]{natbib}
+%\setlength{\bibsep}{0.0pt}
+%\bibpunct{[}{]}{,}{n}{}{;}
+\usepackage[                   % use biblatex for bibliography
+  backend=bibtex8,             %   - use bibtex8 backend 
+  bibencoding=utf8,            %   - use auto file encode
+%  style=numeric,            %   - use alphabetic (or numeric) bib style
+%  style=numeric-comp,            %   - use numeric bib style & [1,2,3] -> [1-3]
+  style=alphabetic,            %   - use alphabetic (or numeric) bib style
+%  style=authoryear,            %   - use alphabetic (or numeric) bib style
+%  bibstyle=authoryear,            %   - use alphabetic (or numeric) bib style
+%  citestyle=authoryearbrack,
+%  style=draft,                %   - use alphabetic (or numeric) bib style
+  natbib=true,                 %   - allow natbib commands
+  hyperref=true,               %   - activate hyperref support
+%  backref=true,                %   - activate backrefs
+  isbn=false,                  %   - don't show isbn tags
+%  url=false,                   %   - don't show url tags
+  url=true,                    %   - don't show url tags
+  doi=true,                    %   - show doi tags
+  urldate=long,                %   - display type for dates
+  firstinits=true,
+  terseinits=false,
+%  sorting=none,
+  sortcites=true,
+  maxnames=3,%
+  minnames=1,%
+  maxbibnames=25,%
+  minbibnames=15,%
+  maxcitenames=2,%
+  mincitenames=1%
+]{biblatex}
+\usepackage[utf8]{inputenc} %% Handles special characters in the bibliography
+\usepackage[T1]{fontenc}
+\setcounter{biburlnumpenalty}{100}
+
+%\ExecuteBibliographyOptions{maxbibnames=6,minbibnames=6,maxcitenames=1,mincitenames=1}
+
+\DeclareCiteCommand{\fullcite}
+  {\usebibmacro{prenote}}
+  {\usedriver
+     {\defcounter{minnames}{6}%
+      \defcounter{maxnames}{6}}
+     {\thefield{entrytype}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+%\setlength{\bibitemsep}{10pt}
+
+\renewbibmacro*{doi+eprint+url}{%
+  \iftoggle{bbx:doi}
+    {\printfield{doi}}
+    {}%
+  \newunit\newblock
+  \iftoggle{bbx:eprint}
+    {\iffieldundef{doi}{\iffieldundef{url}{\printfield{eprint}}{}}{}}
+    {}%
+  \newunit\newblock
+  \iftoggle{bbx:url}
+    {\iffieldundef{doi}{\printfield{url}}{}}
+    {}}
+
+
+% Double spacing, if you want it.
+% \def\dsp{\def\baselinestretch{2.0}\large\normalsize}
+% \dsp
+
+% If the Grad. Division insists that the first paragraph of a section
+% be indented (like the others), then include this line:
+% \usepackage{indentfirst}
+
+\usepackage{xcolor}
+\definecolor{darkblue}{HTML}{0000CC}
+\definecolor{darkgreen}{HTML}{00A800}
+\definecolor{darkpurple}{HTML}{6300b4}
+\definecolor{darkred}{HTML}{8B0000}
+\definecolor{darkgray}{HTML}{666666}
+\definecolor{_mage}{HTML}{912830}
+\definecolor{_cyan}{HTML}{31837a}
+\definecolor{_purp}{HTML}{49425c}
+
+\usepackage{fullpage}
+
+
+%\newcommand{\bsf}[1]{{\sf\textbf{#1}}}
+\newcommand{\bsf}[1]{{\textbf{#1}}}
+\newcommand{\paragraphsf}[1]{{\sf\textbf{#1}}}
+
+\usepackage[compact]{titlesec}
+%\titleformat{\section}{\Large\bfseries\sffamily\centering}{\thesection}{1em}{}
+%\titleformat{\subsection}{\large\bfseries\sffamily\centering}{\thesubsection}{1em}{}
+%\titleformat{\subsubsection}{\bfseries\sffamily\centering}{\thesubsubsection}{1em}{}
+%\titleformat{\paragraph}[runin]{\bfseries\sffamily}{\theparagraph}{1em}{}
+\titleformat{\section}{\Large\bfseries\centering}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\centering}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\bfseries\centering}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[runin]{\bfseries}{\theparagraph}{1em}{}
+
+\titlespacing{\section}{0em}{0.05em}{.00em}
+\titlespacing{\subsection}{0em}{.25em}{.00em}
+\titlespacing{\subsubsection}{0em}{.25em}{.00em}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{20pt}
+\setlength{\footskip}{20pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+%\newcommand{\citesf}[1]{{\sf \cite{#1}}}
+\newcommand{\citesf}[1]{{\cite{#1}}}
+\newcommand{\citesfs}[2]{{\sf \cite[#1]{#2}}}
+%\newcommand{\fig}[1]{{\sf Figure~\ref{fig:#1}}}
+%\newcommand{\figref}[1]{{\sf Figure~\ref{fig:#1}}}
+%\newcommand{\tabref}[1]{{\sf Table~\ref{tab:#1}}}
+%\newcommand{\secref}[1]{Section~\ref{sec:#1}}
+\newcommand{\fig}[1]{{ Figure~\ref{fig:#1}}}
+\newcommand{\figref}[1]{{ Figure~\ref{fig:#1}}}
+\newcommand{\tabref}[1]{{ Table~\ref{tab:#1}}}
+\newcommand{\secref}[1]{Section~\ref{sec:#1}}
+
+%\newcommand{\sect}[1]       {\pagebreak\section{#1}}
+%\newcommand{\sects}[1]      {\pagebreak\section*{#1}}
+%\newcommand{\subsect}[1]    {\pagebreak\subsection{#1}}
+%\newcommand{\subsects}[1]   {\pagebreak\subsection*{#1}}
+%\newcommand{\subsubsect}[1] {\subsubsection{#1}}
+%\newcommand{\subsubsects}[1]{\subsubsection*{#1}}
+\newcommand{\sect}[1]       {\section{#1}}
+\newcommand{\sects}[1]      {\section*{#1}}
+\newcommand{\subsect}[1]    {\subsection{#1}}
+\newcommand{\subsects}[1]   {\subsection*{#1}}
+\newcommand{\subsubsect}[1] {\subsubsection{#1}}
+\newcommand{\subsubsects}[1]{\subsubsection*{#1}}
+
+\usepackage{nameref}
+
+
+\newcommand{\refs}[1]{
+{\small\sf
+\begin{itemize}[itemsep=0pt,topsep=0pt,parsep=0pt]
+#1
+\end{itemize}
+}
+}
+
+\newenvironment{items}
+{\begin{itemize}
+\setlength{\itemsep}{5pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+}
+{\end{itemize}}
+
+
+\usepackage{url}
+\urlstyle{sf}
+
+\usepackage{tocloft}
+\renewcommand{\cftsecfont}{\sffamily}
+\renewcommand{\cftsubsecfont}{\sffamily}
+\renewcommand{\cftsubsubsecfont}{\sffamily}
+\renewcommand{\cftsecafterpnum}{\vskip0pt}
+\setlength{\cftbeforesecskip}{0pt}
+%\renewcommand{\cftsubsecafterpnum}{\vskip0pt}
+
+\newcommand{\cf}[1]{(cf.~#1)}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\pw}[1]{\left\{\begin{array}{ll} #1 \end{array}\right. }
+\newcommand{\mat}[2]{\left(\begin{array}{#1} #2 \end{array}\right)}
+\newcommand{\vf}[1]{\frac{\partial\ }{\partial #1}}
+\newcommand{\vfof}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\bd}{\partial}
+\newcommand{\pd}{\partial}
+\newcommand{\id}{\text{id}\,}
+\newcommand{\rank}[1]{\text{rank}\,#1}
+\newcommand{\td}[1]{\tilde{#1}}
+\newcommand{\quot}[1]{\widetilde{#1}}
+\newcommand{\eqn}[1]{\begin{equation*}\begin{aligned} #1 \end{aligned}\end{equation*}}
+\newcommand{\eqnn}[1]{\begin{equation}\begin{aligned} #1 \end{aligned}\end{equation}}
+\newcommand{\sm}{\setminus}
+\newcommand{\into}{\rightarrow}
+\newcommand{\goesto}{\rightarrow}
+\newcommand{\gamgo}{\stackrel{\gamma}{\rightarrow}}
+\newcommand{\inc}{\hookrightarrow}
+\newcommand{\rx}[1]{#1^\eps}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\T}[1]{\bsf{T#1}}
+\newcommand{\Tr}{\top}
+\newcommand{\Hb}{\mathbb{H}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\m}{\mathcal}
+\newcommand{\e}{\mathscr}
+\newcommand{\eps}{\epsilon}
+\newcommand{\vphi}{\varphi}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\err}{\veps}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\Int}[1]{\operatorname{Int}#1}
+\newcommand{\sgn}[1]{\operatorname{sign}\left( #1 \right)}
+
+% Banjanin Burden
+\newcommand{\Tstate}{v}
+\newcommand{\Tinp}{w}
+\newcommand{\param}{p}
+\newcommand{\state}{x}
+\newcommand{\run}{r}
+\newcommand{\inp}{u}
+\newcommand{\optstate}{\xi}
+\newcommand{\optinp}{\mu}
+\newcommand{\Param}{\e{P}}
+\newcommand{\State}{\e{X}}
+\newcommand{\Run}{\R}
+\newcommand{\Inp}{\e{U}}
+\newcommand{\ssState}{X}
+\newcommand{\ssInp}{U}
+\newcommand{\cost}{c}
+\newcommand{\controlcost}{c}
+\newcommand{\designcost}{c}
+\newcommand{\Ell}{\e{L}}
+\newcommand{\val}{\nu}
+\newcommand{\policy}{\pi}
+%\newcommand{\policy}{\mu}
+\newcommand{\flow}{\phi}
+\newcommand{\sen}{S}
+\newcommand{\senstat}{\sigma}
+\newcommand{\thresh}{\veps}
+\newcommand{\penal}{\mu}
+
+\newcommand{\Parameters}{X}
+\newcommand{\parameter}{x}
+%\newcommand{\Behaviors}{\text{Behaviors}}
+%\newcommand{\behavior}{\text{behavior}}
+\newcommand{\Behaviors}{B}
+\newcommand{\behavior}{b}
+\newcommand{\robot}{\text{robot}}
+\newcommand{\anchor}{\text{anchor}}
+\newcommand{\template}{\text{model}}
+\newcommand{\reduction}{\pi}
+\newcommand{\performance}{\rho}
+
+\newcommand{\D}{D}
+\newcommand{\C}{C}
+\newcommand{\I}{I}
+\newcommand{\PC}{PC}
+
+\newcommand{\HCPS}{HCPS}
+\newcommand{\CPS}{CPS}
+\newcommand{\DRC}{DRC}
+\newcommand{\AI}{AI}
+\newcommand{\LfD}{LfD}
+\newcommand{\PbD}{PbD}
+\newcommand{\SmartCities}{Smart Cities}
+\newcommand{\DOF}{DOF}
+\newcommand{\BMI}{BMI}
+\newcommand{\UWECE}{{UW--ECE}}
+\newcommand{\UWEE}{{UW--EE}}
+\newcommand{\UW}{{UW}}
+\newcommand{\UWCOE}{{UW--COE}}
+\newcommand{\BRL}{BRL}
+\newcommand{\NSF}{NSF}
+\newcommand{\NASA}{NASA}
+\newcommand{\TLX}{TLX}
+\newcommand{\NRI}{NRI}
+\newcommand{\backemf}{back--EMF}
+\newcommand{\TAF}{TAF}
+\newcommand{\CSNE}{CSNE}
+\newcommand{\IRB}{IRB}
+\newcommand{\AAV}{AAV}
+\newcommand{\AUV}{AUV}
+\newcommand{\VO}{VO}
+\newcommand{\ERC}{ERC}
+\newcommand{\REU}{REU}
+\newcommand{\ROS}{ROS}
+\newcommand{\JSON}{JSON}
+\newcommand{\Python}{Python}
+\newcommand{\SimTK}{SimTK}
+\newcommand{\CRII}{CRII}
+\newcommand{\TRUST}{TRUST}
+\newcommand{\STEM}{STEM}
+\newcommand{\URM}{URM}
+\newcommand{\SAS}{SAS}
+\newcommand{\KTW}{K--16}
+\newcommand{\STARS}{STARS}
+\newcommand{\STEP}{STEP}
+
+\newcommand{\apriori}{\emph{a priori}}
+\newcommand{\naive}{na\"{i}ve}
+\newcommand{\naively}{na\"{i}vely}
+
+\newcommand{\aim}[1]{{\sf\S\ref{sec:#1}}}
+\newcommand{\aimn}[1]{Aim \S\ref{sec:#1}: \nameref{sec:#1}}
+
+\newcommand{\Pmap}{Poincar\'{e} map}
+
+\AtBeginDocument{%
+ \abovedisplayskip=9pt plus 3pt minus 9pt
+ \abovedisplayshortskip=0pt plus 3pt
+ \belowdisplayskip=9pt plus 3pt minus 9pt
+ \belowdisplayshortskip=7pt plus 3pt minus 4pt
+}
+
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Example}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+\newcommand{\defn}[1]{\begin{definition} #1 \end{definition}}
+\newcommand{\rem}[1]{\begin{remark} #1 \end{remark}}
+\newcommand{\assump}[1]{\begin{assumption} #1 \end{assumption}}
+\newcommand{\lem}[1]{\begin{lemma} #1 \end{lemma}}
+\newcommand{\ex}[1]{\begin{example} #1 \end{example}}
+\newcommand{\thm}[1]{\begin{theorem} #1 \end{theorem}}
+\newcommand{\prop}[1]{\begin{proposition} #1 \end{proposition}}
+\newcommand{\pf}[1]{\begin{proof} #1 \end{proof}}
+\newcommand{\cor}[1]{\begin{corollary} #1 \end{corollary}}
+
+%\urlstyle{sf}
+%\bibliographystyle{unabuser}
+%\nobibliography*% %load from \bibliography command, below
+%\nobibliography{refs} % load from specified bib file
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes.multipart}
+\usepackage{relsize}
+\tikzset{fontscale/.style={font=\relsize{#1}}}
+
+\def\sambox#1#2#3{
+  \begin{scope}[shift={#1}]
+    \draw[rounded corners,style=solid,line width=3.,color=#2,fill=#2!10!white]  (-4.5,+2.2) rectangle (+5.5,+7.0);
+    \node[color=#2!90!black] (a) at (0.5,+2.675) {{#3}};
+  \end{scope}
+}
+
+\def\samtxt#1#2#3{
+  \begin{scope}[shift={#1}]
+    \node[color=#2] (a) at (0.0,+1.7) {#3};
+  \end{scope}
+}
+
+\def\samarrow#1#2#3#4{
+  \begin{scope}[shift={#1}]
+    \path[draw,#2,line width=4.0,color=#3] (-6.0,0.0) -- (+6.0,0.0);
+    \node[color=#3,shape=rectangle,draw,line width=2,fill=white] (per) at (0.0,0.0) {#4};
+  \end{scope}
+}
+
+\def\samrarrow#1#2#3#4#5{
+  \begin{scope}[shift={#1}]
+    \path[draw,#2,line width=8.0,color=#3] (0.0,0.0) -- (#5,0.0);
+    \node[color=#3,shape=rectangle,draw,line width=2,fill=white] (per) at (#5/2.2,0.0) {#4};
+  \end{scope}
+}
+
+\def\samlarrow#1#2#3#4{
+  \begin{scope}[shift={#1}]
+    \path[draw,#2,line width=8.0,color=#3] (0.0,0.0) -- (+7.,0.0);
+    \node[color=#3,shape=rectangle,draw,line width=2,fill=white] (per) at (3.5,0.0) {#4};
+  \end{scope}
+}
+
